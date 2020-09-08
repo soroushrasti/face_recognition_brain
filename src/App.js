@@ -23,14 +23,28 @@ const ParticleOptions={
 }
 
 class App extends Component {
+
+  constructor(){
+    super();
+    this.state={input:''}
+  }  
+
+  onInputChange=(event)=>{
+
+  }
+  onButtonSubmit=()=>{
+
+  }
+
   render(){
   return (
     <div className="App">
       <Particles params={ParticleOptions} className='particle'/>
      < Navigation />
      <Logo />
-     <ImageLinkForm/>
      <Rank/>
+     <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+    
     </div>
   );
 }}
