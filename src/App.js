@@ -3,10 +3,12 @@ import './App.css';
 import Navigation from './Components/Navigation/Navigation';
 import Logo from './Components/Logo/Logo';
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
+import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import Rank from './Components/Rank/Rank';
 import Particles from 'react-particles-js'
 import 'tachyons' ;
 import Clarifai from 'clarifai'
+
 
 const ParticleOptions={
   particles:{
@@ -23,7 +25,8 @@ const ParticleOptions={
   }
 }
 
-const app=new Clarifai.App({apikey:'b48024407ad04798a8eb1429fcc41f5b'})
+const app = new Clarifai.App({apiKey:''});
+
 
 class App extends Component {
 
@@ -36,10 +39,18 @@ class App extends Component {
   }  
 
   onInputChange=(event)=>{
-
+   this.setState({input:event.target.value})
   }
   onButtonSubmit=()=>{
-
+   this.setState({ImageURL:this.state.input});
+    app.models.predict(
+    Clarifai.FACE_DETECT_MODEL, 'https://samples.clarifai.com/metro-north.jpg')
+    .then(response => {
+     console.log(response);
+   })
+   .catch(err => {
+     console.log(err);
+   });
   }
 
   render(){
@@ -50,9 +61,11 @@ class App extends Component {
      <Logo />
      <Rank/>
      <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+     <FaceRecognition ImageURL={this.state.ImageURL} />
     
     </div>
   );
-}}
+}
+}
 
 export default App;
