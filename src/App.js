@@ -6,6 +6,7 @@ import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import Rank from './Components/Rank/Rank';
 import Particles from 'react-particles-js'
 import 'tachyons' ;
+import Clarifai from 'clarifai'
 
 const ParticleOptions={
   particles:{
@@ -22,11 +23,16 @@ const ParticleOptions={
   }
 }
 
+const app=new Clarifai.App({apikey:'b48024407ad04798a8eb1429fcc41f5b'})
+
 class App extends Component {
 
   constructor(){
     super();
-    this.state={input:''}
+    this.state={input:'',
+    ImageURL:'',
+    box:{}
+  }
   }  
 
   onInputChange=(event)=>{
