@@ -85,7 +85,7 @@ class App extends Component {
   return (
     <div className="App">
       <Particles params={ParticleOptions} className='particle'/>
-     < Navigation  issingin={this.State.issingin} onRouteChange={this.onRouteChange}   />
+     < Navigation  issignin={this.state.issignin} onRouteChange={this.onRouteChange}   />
      { this.state.route==='home'
      ?<div>
         <Logo />
