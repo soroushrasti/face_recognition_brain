@@ -35,6 +35,29 @@ app.post('/signin',(req,res)=>{
             res.status(400).json('error logging')
         }
 })
+app.post('/register',(req,res)=>{
+    const {email,name,password}=req.body;
+    database.users.push({
+        id:"124",
+        name:name,
+        email:email,
+        password:password,
+        joined: new Date()
+    })
+    res.json(database.users[database.users.length-1])
+        
+})
+
+app.get('/profile/:id',(req,res)=>{
+    const {id}=req.param;
+    database.users.forEach(user=>{
+        if (user.id===id){
+            res.json(user);
+        }else{
+            res.status(400).json('no such user')
+        }
+    })
+})
 
 
 app.listen(3000,()=>{
