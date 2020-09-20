@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyparser=require('body-parser');
+const bycrpt=require('bcrypt-nodejs');
 
 const app=express();
 app.use(express.json());
@@ -30,7 +31,7 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/signin',(req,res)=>{
-    if (req.body.password===database.users[0].password && req.body.email===database.users[0].email){
+    if (bcrypt.compare(req.body.password,database.users[0].password) && req.body.email===database.users[0].email){
         res.json('success')}else{
             res.status(400).json('error logging')
         }
@@ -41,7 +42,7 @@ app.post('/register',(req,res)=>{
         id:"124",
         name:name,
         email:email,
-        password:password,
+        password:bycrpt.hash(password,null,null,function(err,hash){}),
         joined: new Date()
     })
     res.json(database.users[database.users.length-1])
@@ -50,15 +51,31 @@ app.post('/register',(req,res)=>{
 
 app.get('/profile/:id',(req,res)=>{
     const {id}=req.param;
+    let found=false;
     database.users.forEach(user=>{
         if (user.id===id){
-            res.json(user);
-        }else{
-            res.status(400).json('no such user')
+            found=true;
+            return res.json(user);
         }
     })
+    if(!found){
+        res.status(400).json('no such user')
+    }
 })
-
+app.post('/image',(req,res)=>{
+    const {id}=req.body;
+    let found=false;
+    database.users.forEach(user=>{
+      if (user.id===id){
+            found=true;
+            user.entries++;
+            return res.json(user.entries);
+      } 
+    })
+    if(!found){
+        res.status(400).json('user not found')
+    }        
+})
 
 app.listen(3000,()=>{
 console.log('app is running')})
