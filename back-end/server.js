@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyparser=require('body-parser');
 const bycrpt=require('bcrypt-nodejs');
+const cors= require('cors');
+
 
 const app=express();
 app.use(express.json());
@@ -31,7 +33,7 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/signin',(req,res)=>{
-    if (bcrypt.compare(req.body.password,database.users[0].password) && req.body.email===database.users[0].email){
+    if (eq.body.password===database.users[0].password && req.body.email===database.users[0].email){
         res.json('success')}else{
             res.status(400).json('error logging')
         }
