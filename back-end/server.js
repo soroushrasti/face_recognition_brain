@@ -1,7 +1,18 @@
 const express = require('express');
-const bodyparser=require('body-parser');
 const bycrpt=require('bcrypt-nodejs');
 const cors= require('cors');
+const knex=require('knex');
+
+const db= knex({
+    client:'pg',
+    connection:{
+        host:'127.0.0.1',
+        user:'soroushrasti',
+        database:'smart-brain'
+    }
+});
+
+//db.select('*').from('users').then(data=>{console.log(data)});
 
 
 const app=express();
@@ -40,29 +51,18 @@ app.post('/signin',(req,res)=>{
 })
 app.post('/register',(req,res)=>{
     const {email,name,password}=req.body;
-    database.users.push({
-        id:"124",
-        name:name,
-        email:email,
-        password:bycrpt.hash(password,null,null,function(err,hash){}),
-        joined: new Date()
-    })
-    res.json(database.users[database.users.length-1])
-        
+    db('users').returning('*').insert({email:email, name:name, joined: new Date()})
+    .then(user=>{res.json(user[0]);})  
+    .catch(err=>res.status(400).json('no such user',err) )   
 })
 
 app.get('/profile/:id',(req,res)=>{
-    const {id}=req.param;
-    let found=false;
-    database.users.forEach(user=>{
-        if (user.id===id){
-            found=true;
-            return res.json(user);
-        }
+    const {id}=req.params;
+    db.select('*').from('users').where({id:id})
+    .then(user=>{
+        console.log(user[0]);
+        return res.json(user[0])
     })
-    if(!found){
-        res.status(400).json('no such user')
-    }
 })
 app.post('/image',(req,res)=>{
     const {id}=req.body;

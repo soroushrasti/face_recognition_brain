@@ -9,7 +9,7 @@ import Register from './Components/Register/Register';
 import Rank from './Components/Rank/Rank';
 import Particles from 'react-particles-js'
 import 'tachyons' ;
-import Clarifai from 'clarifai'
+import Clarifai from 'clarifai';
 
 
 const ParticleOptions={
@@ -32,15 +32,23 @@ const app = new Clarifai.App({apiKey:'b48024407ad04798a8eb1429fcc41f5b'});
 
 class App extends Component {
 
-  constructor(){
+  constructor() {
     super();
-    this.state={input:'',
-    ImageURL:'',
-    box:{},
-    route:'signin',
-    issingin:false
-  }
-  }  
+    this.state = {
+      input: '',
+      imageUrl: '',
+      box: {},
+      route: 'signin',
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
+    }
+  } 
 
   calculateFaceLocation=(data)=>{
     const clarifaiFace=data.outputs[0].data.regions[0].region_info.bounding_box;
