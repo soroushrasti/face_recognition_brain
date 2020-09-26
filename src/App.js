@@ -27,6 +27,21 @@ const ParticleOptions={
   }
 }
 
+const intialState={
+  input: '',
+  imageUrl: '',
+  box: {},
+  route: 'signin',
+  isSignedIn: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: ''
+  }
+}
+
 const app = new Clarifai.App({apiKey:'b48024407ad04798a8eb1429fcc41f5b'});
 
 
@@ -34,20 +49,7 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {},
-      route: 'signin',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: ''
-      }
-    }
+    this.state = intialState;
   } 
 
   calculateFaceLocation=(data)=>{
@@ -64,7 +66,7 @@ class App extends Component {
   }
   onRouteChange=(route)=>{
     if (route==='signout'){
-    this.setState({issingin:false})
+    this.setState(intialState)
   }else if(route==='home'){
     this.setState({issingin:true})
   }this.setState({route:route})
