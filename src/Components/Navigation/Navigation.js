@@ -14,8 +14,6 @@ const Navigation=(onRouteChange,issignin)=>{
             <p onClick={()=>onRouteChange('register')} className='f3 link dim black underline pa3 pointer'>Register</p>
             </nav> );
     }        
-    
-    
 }
-
 export default Navigation;
+

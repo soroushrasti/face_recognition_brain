@@ -1,4 +1,7 @@
 const handleSignin=(req,res,db,bycrpt)=>{
+    if(!req.body.email || !req.body.password){
+        return res.status(400).json('incorrect submission')
+    }
     db.select('email','hash')
     .from('login')
     .where('email','=',req.body.email)
