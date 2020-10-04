@@ -1,5 +1,4 @@
 import React from 'react';
-const cors= require('cors');
 
 class Signin extends React.Component {
   constructor(props) {

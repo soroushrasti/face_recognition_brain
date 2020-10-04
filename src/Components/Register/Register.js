@@ -1,5 +1,4 @@
 import React from 'react';
-const cors= require('cors');
 
 class Register extends React.Component {
   constructor(props) {
