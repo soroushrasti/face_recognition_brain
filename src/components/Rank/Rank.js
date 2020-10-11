@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-const Rank=(name,entries)=>{
+const Rank=({name,entries})=>{
 
     return(
 <div>
     <div className='white f3'>
-     {`${name} you rank is:`}
+     {`Dear ${name}, your rank in my database in accordance to the number of requested face detection is:`}
     </div>
     <div className='white f1'>
      {entries}

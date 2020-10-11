@@ -8,14 +8,15 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import './App.css';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import 'tachyons';
 
 const particlesOptions = {
   particles: {
     number: {
-      value: 30,
+      value: 70,
       density: {
         enable: true,
-        value_area: 800
+        value_area: 500
       }
     }
   }
@@ -52,6 +53,7 @@ class App extends Component {
     }})
   }
 
+ 
   calculateFaceLocation = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
@@ -64,7 +66,6 @@ class App extends Component {
       bottomRow: height - (clarifaiFace.bottom_row * height)
     }
   }
-
   displayFaceBox = (box) => {
     this.setState({box: box});
   }
@@ -73,9 +74,10 @@ class App extends Component {
     this.setState({input: event.target.value});
   }
 
+
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-      fetch('https://aqueous-beach-69291.herokuapp.com/imageurl', {
+      fetch('http://localhost:3000/imageurl', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -85,7 +87,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('https://aqueous-beach-69291.herokuapp.com/image', {
+          fetch('http://localhost:3000/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -96,8 +98,6 @@ class App extends Component {
             .then(count => {
               this.setState(Object.assign(this.state.user, { entries: count}))
             })
-            .catch(console.log)
-
         }
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
@@ -108,9 +108,9 @@ class App extends Component {
     if (route === 'signout') {
       this.setState(initialState)
     } else if (route === 'home') {
-      this.setState({isSignedIn: true})
-    }
-    this.setState({route: route});
+      this.setState({isSignedIn: true, route:'home'})
+    } else{
+    this.setState({route: route });}
   }
 
   render() {
@@ -146,3 +146,5 @@ class App extends Component {
 }
 
 export default App;
+
+//  https://media.glamour.com/photos/5a425fd3b6bcee68da9f86f8/master/w_1000,h_743,c_limit/best-face-oil.png

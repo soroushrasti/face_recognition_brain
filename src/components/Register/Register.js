@@ -23,7 +23,9 @@ class Register extends React.Component {
   }
 
   onSubmitSignIn = () => {
-    fetch('https://aqueous-beach-69291.herokuapp.com/register', {
+   // fetch('https://aqueous-beach-69291.herokuapp.com/register', {
+      fetch('http://localhost:3000/register', {
+
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -36,7 +38,7 @@ class Register extends React.Component {
       .then(user => {
         if (user.id) {
           this.props.loadUser(user)
-          this.props.onRouteChange('home');
+          this.props.onRouteChange('home')
         }
       }).catch(() => console.log("Can’t access server  response. Blocked by browser?"))
   }
