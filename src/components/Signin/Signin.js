@@ -44,12 +44,16 @@ class Signin extends React.Component {
 
       <article className=" mv4 w-100 w-20-m w-105-l mw8 shadow-1 center f4  pa3 fw5 lh-copy dim black db ">
 
-      <p >Welcome to Soroush Rasti's Profelio website!{"\n"}
+      <p>Welcome to Soroush Rasti's Profelio website!<br />
+
         It is employed by HTML/CSS, Asynchronous JavaScript, React.js, 
         RESTful API, in front-end, to recognize a face 
-        in your picture using the Clarifai Model.{"\n"}
+        in your picture using the Clarifai Model.<br />
+
         Node.js, Express.js, PostgresSQL and Bcrypt are implemented in
-         the back-end to handle the registration precess securely.</p>
+         the back-end to handle the registration precess securely.
+         
+         </p>
       </article>
 
 
