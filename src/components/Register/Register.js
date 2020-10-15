@@ -23,8 +23,8 @@ class Register extends React.Component {
   }
 
   onSubmitSignIn = () => {
-   // fetch('https://aqueous-beach-69291.herokuapp.com/register', {
-      fetch('http://localhost:3000/register', {
+    fetch('https://aqueous-beach-69291.herokuapp.com/register', {
+     // fetch('http://localhost:3000/register', {
 
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -45,6 +45,17 @@ class Register extends React.Component {
 
   render() {
     return (
+      <div>
+
+      <article className="br3 ba b--black-10 mv4 w-100 w-20-m w-105-l mw8 shadow-1 center f4  pa3 fw5 lh-copy dim black db ">
+        <p >Welcome to Soroush Rasti's Profelio website!</p>
+        <p >It is employed by HTML/CSS, Asynchronous JavaScript, React.js, 
+        RESTful API, in front-end, to recognize a face 
+        in your picture using the Clarifai Model.</p>
+        <p >Node.js, Express.js, PostgresSQL and Bcrypt are implemented in
+         the back-end to handle the registration precess securely.</p>
+      </article>
+
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
           <div className="measure">
@@ -92,6 +103,7 @@ class Register extends React.Component {
           </div>
         </main>
       </article>
+      </div>
     );
   }
 }
