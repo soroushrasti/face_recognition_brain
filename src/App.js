@@ -26,6 +26,7 @@ const initialState = {
   input: '',
   imageUrl: '',
   box: {},
+  pageTitle:'Face_Recognition_brain',
   route: 'signin',
   isSignedIn: false,
   user: {
@@ -37,10 +38,14 @@ const initialState = {
   }
 }
 
+
+
 class App extends Component {
   constructor() {
     super();
     this.state = initialState;
+    const {pageTitle}=this.state;
+    document.title = pageTitle;
   }
 
   loadUser = (data) => {
