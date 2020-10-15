@@ -9,6 +9,8 @@ import Rank from './components/Rank/Rank';
 import './App.css';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import 'tachyons';
+import 'Helmet'import { queryHelpers } from '@testing-library/react';
+ from 'react-helmet';
 
 const particlesOptions = {
   particles: {
@@ -125,6 +127,13 @@ class App extends Component {
   render() {
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
+      <main>
+        <Helmet>
+          <title>Face_Recognition_brain</title>
+          <meta property='og:title' content="Face_Recognition_brain" />
+          <meta property='og:image' content="https://newsroom.cisco.com/documents/10157/14740/facial-recognition-feature_1200x675_hero_090418.jpg"/>
+          <meta property='og:description' content="Soroush Rasti Portfolio React Node Javascript"/>
+        </Helmet>
       <div className="App">
          <Particles className='particles'
           params={particlesOptions}
@@ -149,6 +158,7 @@ class App extends Component {
             )
         }
       </div>
+      </main>
     );
   }
 }
