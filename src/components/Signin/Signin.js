@@ -43,7 +43,8 @@ class Signin extends React.Component {
     <div>
 
       <article className="br3 ba b--black-10 mv4 w-100 w-20-m w-105-l mw8 shadow-1 center f4  pa3 fw5 lh-copy dim black db ">
-        <p >Welcome to Soroush Rasti's Profelio website!</p>
+        <p className="lh-copy measure ">
+          Welcome to Soroush Rasti's Profelio website!</p>
         <p >It is employed by HTML/CSS, Asynchronous JavaScript, React.js, 
         RESTful API, in front-end, to recognize a face 
         in your picture using the Clarifai Model.</p>
