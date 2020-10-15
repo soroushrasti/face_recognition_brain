@@ -9,8 +9,7 @@ import Rank from './components/Rank/Rank';
 import './App.css';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import 'tachyons';
-import 'Helmet'import { queryHelpers } from '@testing-library/react';
- from 'react-helmet';
+import 'Helmet' from 'react-helmet';
 
 const particlesOptions = {
   particles: {
