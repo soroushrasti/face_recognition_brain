@@ -14,7 +14,7 @@ import Helmet from 'react-helmet';
 const particlesOptions = {
   particles: {
     number: {
-      value: 70,
+      value: 80,
       density: {
         enable: true,
         value_area: 500
