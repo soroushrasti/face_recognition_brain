@@ -44,7 +44,8 @@ class Signin extends React.Component {
 
       <article className=" mv4 w-100 w-20-m w-105-l mw8 shadow-1 center f4  pa3 fw5 lh-copy dim black db ">
       <p>Welcome to Soroush Rasti's portfolio website!<br />
-        This website works with React.js in the front-end, and Node.js, Express.js, PostgresSQL, and Bcrypt in the back-end.
+        This website works with React.js in the front-end, and Node.js, Express.js, PostgresSQL, and Bcrypt in the back-end.<br />
+        Please make sure to register yourself in order to use the full functionality of the website
          </p>
       </article>
 
